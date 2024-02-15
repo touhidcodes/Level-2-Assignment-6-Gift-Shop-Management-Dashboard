@@ -3,6 +3,7 @@ import { useAppDispatch, useAppSelector } from "../../redux/hook";
 import { logOut, useCurrentToken } from "../../redux/features/auth/authSlice";
 import { Navigate } from "react-router-dom";
 import { verifyToken } from "../../utils/verifyToken";
+import { TJWTPayload } from "../../interface/global.interface";
 
 type TProtectedRoute = {
   children: ReactNode;
@@ -14,7 +15,7 @@ const ProtectedRoutes = ({ children, role }: TProtectedRoute) => {
   let user;
 
   if (token) {
-    user = verifyToken(token);
+    user = verifyToken(token) as TJWTPayload;
   }
 
   const dispatch = useAppDispatch();

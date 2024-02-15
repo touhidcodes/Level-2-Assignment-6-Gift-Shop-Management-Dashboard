@@ -1,41 +1,90 @@
 import { Link, Outlet } from "react-router-dom";
 import Headers from "../../shared/Headers/Headers";
-import { useCurrentToken } from "../../../redux/features/auth/authSlice";
+import { useCurrentUser } from "../../../redux/features/auth/authSlice";
+import { useAppSelector } from "../../../redux/hook";
+import { userRoles } from "../../../interface/global.interface";
 
 const DashboardLayout = () => {
-  // const user = useCurrentToken();
+  const user = useAppSelector(useCurrentUser);
+
   const sidebarContent = (
     <ul className="menu d-block text-white text-xl rounded-box">
-      <li>
-        <summary>ProductManagement</summary>
-        <ul>
+      {user?.role === userRoles.manager && (
+        <>
           <li>
-            <a>
-              <Link to="/dashboard/product">All Products</Link>
-            </a>
+            <details>
+              <summary>ProductManagement</summary>
+              <ul>
+                <li>
+                  <a>
+                    <Link to="/dashboard/product">All Products</Link>
+                  </a>
+                </li>
+                <li>
+                  <a>
+                    <Link to="/dashboard/create-product">Create Product</Link>
+                  </a>
+                </li>
+              </ul>
+            </details>
           </li>
           <li>
-            <a>
-              <Link to="/dashboard/create-product">Create Product</Link>
-            </a>
+            <details>
+              <summary>Sales Management</summary>
+              <ul>
+                <li>
+                  <a>
+                    <Link to="/dashboard/sell-product">Sell Product</Link>
+                  </a>
+                </li>
+                <li>
+                  <a>
+                    <Link to="/dashboard/sales-history">Sales History</Link>
+                  </a>
+                </li>
+              </ul>
+            </details>
           </li>
-        </ul>
-      </li>
-      <li>
-        <summary>Sales Management</summary>
-        <ul>
           <li>
-            <a>
-              <Link to="/dashboard/sell-product">Sell Product</Link>
-            </a>
+            <details>
+              <summary>User Management</summary>
+              <ul>
+                <li>
+                  <a>
+                    <Link to="/dashboard/sales-history">All Users</Link>
+                  </a>
+                </li>
+                <li>
+                  <a>
+                    <Link to="/dashboard/create-manager">Create Manager</Link>
+                  </a>
+                </li>
+              </ul>
+            </details>
           </li>
+        </>
+      )}
+      {user?.role === userRoles.seller && (
+        <>
           <li>
-            <a>
-              <Link to="/dashboard/sales-history">Sales History</Link>
-            </a>
+            <details>
+              <summary>Sales Management</summary>
+              <ul>
+                <li>
+                  <a>
+                    <Link to="/dashboard/sell-product">Sell Product</Link>
+                  </a>
+                </li>
+                <li>
+                  <a>
+                    <Link to="/dashboard/sales-history">Sales History</Link>
+                  </a>
+                </li>
+              </ul>
+            </details>
           </li>
-        </ul>
-      </li>
+        </>
+      )}
     </ul>
   );
   return (

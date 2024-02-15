@@ -12,6 +12,7 @@ import SellProduct from "../pages/Sales/SellProduct/SellProduct";
 import SalesHistory from "../pages/Sales/SalesHistory/SalesHistory";
 import DuplicateProduct from "../pages/Product/DuplicateProduct/DuplicateProduct";
 import { userRoles } from "../interface/global.interface";
+import CreateManager from "../pages/Manager/createManager";
 
 const router = createBrowserRouter([
   {
@@ -73,6 +74,14 @@ const router = createBrowserRouter([
         element: (
           <ProtectedRoutes role={userRoles.manager}>
             <UpdateProduct />,
+          </ProtectedRoutes>
+        ),
+      },
+      {
+        path: "create-manager",
+        element: (
+          <ProtectedRoutes role={userRoles.manager}>
+            <CreateManager />,
           </ProtectedRoutes>
         ),
       },
