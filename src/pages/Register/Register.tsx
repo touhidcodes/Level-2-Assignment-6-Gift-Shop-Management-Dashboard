@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useRegisterMutation } from "../../redux/features/auth/authApi";
 import { toast } from "sonner";
 import { TApiResponse } from "../../interface/response.interface";
+import { userRoles } from "../../interface/global.interface";
 
 const Register = () => {
   const [registerUser] = useRegisterMutation();
@@ -22,13 +23,21 @@ const Register = () => {
   } = useForm<TRegister>();
 
   const onSubmit: SubmitHandler<TRegister> = async (data) => {
-    const res: TApiResponse = await registerUser(data);
-
-    if ("error" in res) {
-      toast.error(`${res.error.data.errorSources[0].message}`);
-    } else if (res.data?.success) {
-      toast.success("User Registered Successfully");
-      navigate("/login");
+    const sellerData = {
+      ...data,
+      role: userRoles.seller,
+    };
+    try {
+      const res: TApiResponse = await registerUser(sellerData);
+      console.log(res);
+      if ("error" in res) {
+        toast.error(`${res.error.data.errorSources[0].message}`);
+      } else if (res.data?.success) {
+        toast.success("User Registered Successfully");
+        navigate("/login");
+      }
+    } catch (err) {
+      console.log(err);
     }
   };
 

@@ -1,42 +1,40 @@
 import { Link, Outlet } from "react-router-dom";
 import Headers from "../../shared/Headers/Headers";
+import { useCurrentToken } from "../../../redux/features/auth/authSlice";
 
 const DashboardLayout = () => {
+  // const user = useCurrentToken();
   const sidebarContent = (
     <ul className="menu d-block text-white text-xl rounded-box">
       <li>
-        <details>
-          <summary>ProductManagement</summary>
-          <ul>
-            <li>
-              <a>
-                <Link to="/dashboard/product">All Products</Link>
-              </a>
-            </li>
-            <li>
-              <a>
-                <Link to="/dashboard/create-product">Create Product</Link>
-              </a>
-            </li>
-          </ul>
-        </details>
+        <summary>ProductManagement</summary>
+        <ul>
+          <li>
+            <a>
+              <Link to="/dashboard/product">All Products</Link>
+            </a>
+          </li>
+          <li>
+            <a>
+              <Link to="/dashboard/create-product">Create Product</Link>
+            </a>
+          </li>
+        </ul>
       </li>
       <li>
-        <details>
-          <summary>Sales Management</summary>
-          <ul>
-            <li>
-              <a>
-                <Link to="/dashboard/sell-product">Sell Product</Link>
-              </a>
-            </li>
-            <li>
-              <a>
-                <Link to="/dashboard/sales-history">Sales History</Link>
-              </a>
-            </li>
-          </ul>
-        </details>
+        <summary>Sales Management</summary>
+        <ul>
+          <li>
+            <a>
+              <Link to="/dashboard/sell-product">Sell Product</Link>
+            </a>
+          </li>
+          <li>
+            <a>
+              <Link to="/dashboard/sales-history">Sales History</Link>
+            </a>
+          </li>
+        </ul>
       </li>
     </ul>
   );

@@ -11,6 +11,7 @@ import UpdateProduct from "../pages/Product/UpdateProduct/UpdateProduct";
 import SellProduct from "../pages/Sales/SellProduct/SellProduct";
 import SalesHistory from "../pages/Sales/SalesHistory/SalesHistory";
 import DuplicateProduct from "../pages/Product/DuplicateProduct/DuplicateProduct";
+import { userRoles } from "../interface/global.interface";
 
 const router = createBrowserRouter([
   {
@@ -34,7 +35,7 @@ const router = createBrowserRouter([
   {
     path: "/dashboard",
     element: (
-      <ProtectedRoutes>
+      <ProtectedRoutes role={undefined}>
         <DashboardLayout />
       </ProtectedRoutes>
     ),
@@ -45,27 +46,51 @@ const router = createBrowserRouter([
       },
       {
         path: "create-product",
-        element: <CreateProduct />,
+        element: (
+          <ProtectedRoutes role={userRoles.manager}>
+            <CreateProduct />,
+          </ProtectedRoutes>
+        ),
       },
       {
         path: "product",
-        element: <AllProduct />,
+        element: (
+          <ProtectedRoutes role={userRoles.manager}>
+            <AllProduct />,
+          </ProtectedRoutes>
+        ),
       },
       {
         path: "product/duplicate",
-        element: <DuplicateProduct />,
+        element: (
+          <ProtectedRoutes role={userRoles.manager}>
+            <DuplicateProduct />,
+          </ProtectedRoutes>
+        ),
       },
       {
         path: "product/:productId",
-        element: <UpdateProduct />,
+        element: (
+          <ProtectedRoutes role={userRoles.manager}>
+            <UpdateProduct />,
+          </ProtectedRoutes>
+        ),
       },
       {
         path: "sell-product",
-        element: <SellProduct />,
+        element: (
+          <ProtectedRoutes role={userRoles.seller}>
+            <SellProduct />,
+          </ProtectedRoutes>
+        ),
       },
       {
         path: "sales-history",
-        element: <SalesHistory />,
+        element: (
+          <ProtectedRoutes role={userRoles.seller}>
+            <SalesHistory />,
+          </ProtectedRoutes>
+        ),
       },
     ],
   },
