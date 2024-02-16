@@ -4,7 +4,7 @@ import { toast } from "sonner";
 import { TApiResponse } from "../../../interface/response.interface";
 import { userRoles } from "../../../interface/global.interface";
 
-const CreateManager = () => {
+const CreateUser = () => {
   const [registerUser] = useRegisterMutation();
 
   type TRegister = {
@@ -88,4 +88,4 @@ const CreateManager = () => {
   );
 };
 
-export default CreateManager;
+export default CreateUser;

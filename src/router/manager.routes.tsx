@@ -7,7 +7,7 @@ import SellProduct from "../pages/Sales/SellProduct/SellProduct";
 import CreateUser from "../pages/User/CreateUser/CreateUser";
 import Welcome from "../pages/Welcome/Welcome";
 
-export const adminRoutes = [
+export const managerRoutes = [
   {
     name: "Welcome",
     path: "welcome",

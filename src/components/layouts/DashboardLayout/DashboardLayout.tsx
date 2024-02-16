@@ -5,17 +5,20 @@ import { useAppSelector } from "../../../redux/hook";
 import { userRoles } from "../../../interface/global.interface";
 import { dashboardItemsGenerator } from "../../../utils/dashboardItemsGenerator";
 import { adminRoutes } from "../../../router/admin.routes";
+import { managerRoutes } from "../../../router/manager.routes";
 
 const DashboardLayout = () => {
   const user = useAppSelector(useCurrentUser);
 
-  console.log(dashboardItemsGenerator(adminRoutes, "admin"));
-
-  const adminItems = dashboardItemsGenerator(adminRoutes, "admin");
+  const adminItems = dashboardItemsGenerator(adminRoutes, userRoles.superAdmin);
+  const managerItems = dashboardItemsGenerator(
+    managerRoutes,
+    userRoles.manager
+  );
 
   const sidebarContent = (
     <ul className="menu d-block text-white text-xl rounded-box">
-      {user?.role === userRoles.manager && (
+      {user?.role === userRoles.superAdmin && (
         <>
           {adminItems.map((item) => (
             <li key={item?.key}>
@@ -38,7 +41,28 @@ const DashboardLayout = () => {
         </>
       )}
 
-      {user?.role === userRoles.manager && <></>}
+      {user?.role === userRoles.manager && (
+        <>
+          {managerItems.map((item) => (
+            <li key={item?.key}>
+              {item?.children ? (
+                <details>
+                  <summary>{item?.label}</summary>
+                  <ul key={item?.key}>
+                    {item?.children?.map((child) => (
+                      <li key={child?.key} className="text-white">
+                        <a>{child?.label}</a>
+                      </li>
+                    ))}
+                  </ul>
+                </details>
+              ) : (
+                <summary>{item?.label}</summary>
+              )}
+            </li>
+          ))}
+        </>
+      )}
       {user?.role === userRoles.seller && (
         <>
           <li>

@@ -7,6 +7,7 @@ import Register from "../pages/Register/Register";
 import { userRoles } from "../interface/global.interface";
 import { adminRoutes } from "./admin.routes";
 import { routesGenerator } from "../utils/routesGenertor";
+import { managerRoutes } from "./manager.routes";
 
 const router = createBrowserRouter([
   {
@@ -43,7 +44,7 @@ const router = createBrowserRouter([
         <DashboardLayout />
       </ProtectedRoutes>
     ),
-    // children: adminRoles,
+    children: routesGenerator(managerRoutes),
   },
 ]);
 
