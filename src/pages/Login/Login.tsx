@@ -43,7 +43,7 @@ const Login = () => {
 
       const user = verifyToken(res.data.accessToken);
       dispatch(setUser({ user, token: res.data.accessToken }));
-      navigate("/dashboard/welcome");
+      navigate("/admin/welcome");
     } catch (error: any) {
       toast.error(`${error?.data?.message}`);
     }

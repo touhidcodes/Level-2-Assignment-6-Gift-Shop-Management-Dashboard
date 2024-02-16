@@ -5,8 +5,8 @@ import ProtectedRoutes from "../components/Protected/ProtectedRoutes";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import { userRoles } from "../interface/global.interface";
-import { routeGenerator } from "../utils/routesGenartor";
 import { adminRoutes } from "./admin.routes";
+import { routesGenerator } from "../utils/routesGenertor";
 
 const router = createBrowserRouter([
   {
@@ -34,7 +34,7 @@ const router = createBrowserRouter([
         <DashboardLayout />
       </ProtectedRoutes>
     ),
-    children: routeGenerator(adminRoutes),
+    children: routesGenerator(adminRoutes),
   },
   {
     path: "/manager",

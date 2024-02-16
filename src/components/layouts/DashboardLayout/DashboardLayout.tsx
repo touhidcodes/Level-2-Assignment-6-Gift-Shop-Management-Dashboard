@@ -3,67 +3,42 @@ import Headers from "../../shared/Headers/Headers";
 import { useCurrentUser } from "../../../redux/features/auth/authSlice";
 import { useAppSelector } from "../../../redux/hook";
 import { userRoles } from "../../../interface/global.interface";
+import { dashboardItemsGenerator } from "../../../utils/dashboardItemsGenerator";
+import { adminRoutes } from "../../../router/admin.routes";
 
 const DashboardLayout = () => {
   const user = useAppSelector(useCurrentUser);
+
+  console.log(dashboardItemsGenerator(adminRoutes, "admin"));
+
+  const adminItems = dashboardItemsGenerator(adminRoutes, "admin");
 
   const sidebarContent = (
     <ul className="menu d-block text-white text-xl rounded-box">
       {user?.role === userRoles.manager && (
         <>
-          <li>
-            <details>
-              <summary>ProductManagement</summary>
-              <ul>
-                <li>
-                  <a>
-                    <Link to="/dashboard/product">All Products</Link>
-                  </a>
-                </li>
-                <li>
-                  <a>
-                    <Link to="/dashboard/create-product">Create Product</Link>
-                  </a>
-                </li>
-              </ul>
-            </details>
-          </li>
-          <li>
-            <details>
-              <summary>Sales Management</summary>
-              <ul>
-                <li>
-                  <a>
-                    <Link to="/dashboard/sell-product">Sell Product</Link>
-                  </a>
-                </li>
-                <li>
-                  <a>
-                    <Link to="/dashboard/sales-history">Sales History</Link>
-                  </a>
-                </li>
-              </ul>
-            </details>
-          </li>
-          <li>
-            <details>
-              <summary>User Management</summary>
-              <ul>
-                <li>
-                  <a>
-                    <Link to="/dashboard/sales-history">All Users</Link>
-                  </a>
-                </li>
-                <li>
-                  <a>
-                    <Link to="/dashboard/create-manager">Create Manager</Link>
-                  </a>
-                </li>
-              </ul>
-            </details>
-          </li>
+          {adminItems.map((item) => (
+            <li key={item?.key}>
+              {item?.children ? (
+                <details>
+                  <summary>{item?.label}</summary>
+                  <ul key={item?.key}>
+                    {item?.children?.map((child) => (
+                      <li key={child?.key} className="text-white">
+                        <a>{child?.label}</a>
+                      </li>
+                    ))}
+                  </ul>
+                </details>
+              ) : (
+                <summary>{item?.label}</summary>
+              )}
+            </li>
+          ))}
         </>
       )}
+
+      {user?.role === userRoles.manager && <></>}
       {user?.role === userRoles.seller && (
         <>
           <li>

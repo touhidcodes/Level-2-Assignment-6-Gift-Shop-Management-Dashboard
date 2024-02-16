@@ -17,18 +17,22 @@ export const adminRoutes = [
     name: "Product Management",
     children: [
       {
+        name: "Create Product",
         path: "create-product",
         element: <CreateProduct />,
       },
       {
+        name: "All Products",
         path: "product",
         element: <AllProduct />,
       },
       {
+        name: "Duplicate Product",
         path: "product/duplicate",
         element: <DuplicateProduct />,
       },
       {
+        name: "Update Product",
         path: "product/:productId",
         element: <UpdateProduct />,
       },
@@ -38,6 +42,7 @@ export const adminRoutes = [
     name: "User Management",
     children: [
       {
+        name: "Create Manager",
         path: "create-manager",
         element: <CreateManager />,
       },
