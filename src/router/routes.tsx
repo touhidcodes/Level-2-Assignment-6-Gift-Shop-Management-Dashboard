@@ -48,7 +48,7 @@ const router = createBrowserRouter([
       {
         path: "create-product",
         element: (
-          <ProtectedRoutes roles={userRoles.manager}>
+          <ProtectedRoutes roles={[userRoles.manager]}>
             <CreateProduct />,
           </ProtectedRoutes>
         ),
@@ -56,7 +56,7 @@ const router = createBrowserRouter([
       {
         path: "product",
         element: (
-          <ProtectedRoutes roles={userRoles.manager}>
+          <ProtectedRoutes roles={[userRoles.manager]}>
             <AllProduct />,
           </ProtectedRoutes>
         ),
@@ -64,7 +64,7 @@ const router = createBrowserRouter([
       {
         path: "product/duplicate",
         element: (
-          <ProtectedRoutes roles={userRoles.manager}>
+          <ProtectedRoutes roles={[userRoles.manager]}>
             <DuplicateProduct />,
           </ProtectedRoutes>
         ),
@@ -72,7 +72,7 @@ const router = createBrowserRouter([
       {
         path: "product/:productId",
         element: (
-          <ProtectedRoutes roles={userRoles.manager}>
+          <ProtectedRoutes roles={[userRoles.manager]}>
             <UpdateProduct />,
           </ProtectedRoutes>
         ),
@@ -80,7 +80,7 @@ const router = createBrowserRouter([
       {
         path: "create-manager",
         element: (
-          <ProtectedRoutes roles={userRoles.manager}>
+          <ProtectedRoutes roles={[userRoles.manager]}>
             <CreateManager />,
           </ProtectedRoutes>
         ),
@@ -88,7 +88,7 @@ const router = createBrowserRouter([
       {
         path: "sales-history",
         element: (
-          <ProtectedRoutes roles={userRoles.manager}>
+          <ProtectedRoutes roles={[userRoles.manager]}>
             <SalesHistory />,
           </ProtectedRoutes>
         ),
