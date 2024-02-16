@@ -12,7 +12,7 @@ import SellProduct from "../pages/Sales/SellProduct/SellProduct";
 import SalesHistory from "../pages/Sales/SalesHistory/SalesHistory";
 import DuplicateProduct from "../pages/Product/DuplicateProduct/DuplicateProduct";
 import { userRoles } from "../interface/global.interface";
-import CreateManager from "../pages/Manager/createManager";
+import CreateManager from "../pages/Manager/CreateManager/createManager";
 
 const router = createBrowserRouter([
   {
@@ -36,7 +36,7 @@ const router = createBrowserRouter([
   {
     path: "/dashboard",
     element: (
-      <ProtectedRoutes role={undefined}>
+      <ProtectedRoutes roles={undefined}>
         <DashboardLayout />
       </ProtectedRoutes>
     ),
@@ -48,7 +48,7 @@ const router = createBrowserRouter([
       {
         path: "create-product",
         element: (
-          <ProtectedRoutes role={userRoles.manager}>
+          <ProtectedRoutes roles={userRoles.manager}>
             <CreateProduct />,
           </ProtectedRoutes>
         ),
@@ -56,7 +56,7 @@ const router = createBrowserRouter([
       {
         path: "product",
         element: (
-          <ProtectedRoutes role={userRoles.manager}>
+          <ProtectedRoutes roles={userRoles.manager}>
             <AllProduct />,
           </ProtectedRoutes>
         ),
@@ -64,7 +64,7 @@ const router = createBrowserRouter([
       {
         path: "product/duplicate",
         element: (
-          <ProtectedRoutes role={userRoles.manager}>
+          <ProtectedRoutes roles={userRoles.manager}>
             <DuplicateProduct />,
           </ProtectedRoutes>
         ),
@@ -72,7 +72,7 @@ const router = createBrowserRouter([
       {
         path: "product/:productId",
         element: (
-          <ProtectedRoutes role={userRoles.manager}>
+          <ProtectedRoutes roles={userRoles.manager}>
             <UpdateProduct />,
           </ProtectedRoutes>
         ),
@@ -80,24 +80,24 @@ const router = createBrowserRouter([
       {
         path: "create-manager",
         element: (
-          <ProtectedRoutes role={userRoles.manager}>
+          <ProtectedRoutes roles={userRoles.manager}>
             <CreateManager />,
-          </ProtectedRoutes>
-        ),
-      },
-      {
-        path: "sell-product",
-        element: (
-          <ProtectedRoutes role={userRoles.seller}>
-            <SellProduct />,
           </ProtectedRoutes>
         ),
       },
       {
         path: "sales-history",
         element: (
-          <ProtectedRoutes role={userRoles.seller}>
+          <ProtectedRoutes roles={userRoles.manager}>
             <SalesHistory />,
+          </ProtectedRoutes>
+        ),
+      },
+      {
+        path: "sell-product",
+        element: (
+          <ProtectedRoutes roles={[userRoles.manager, userRoles.seller]}>
+            <SellProduct />,
           </ProtectedRoutes>
         ),
       },

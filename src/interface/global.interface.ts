@@ -1,6 +1,8 @@
 export const userRoles = {
   manager: "manager",
   seller: "seller",
-};
+} as const;
 
-export type TJWTPayload = { username: string; role: string };
+export type TUserRole = keyof typeof userRoles;
+
+export type TJWTPayload = { username: string; role: TUserRole };

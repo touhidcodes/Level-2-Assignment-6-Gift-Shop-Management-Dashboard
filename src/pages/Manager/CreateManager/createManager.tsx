@@ -1,8 +1,8 @@
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useRegisterMutation } from "../../redux/features/auth/authApi";
+import { useRegisterMutation } from "../../../redux/features/auth/authApi";
 import { toast } from "sonner";
-import { TApiResponse } from "../../interface/response.interface";
-import { userRoles } from "../../interface/global.interface";
+import { TApiResponse } from "../../../interface/response.interface";
+import { userRoles } from "../../../interface/global.interface";
 
 const CreateManager = () => {
   const [registerUser] = useRegisterMutation();
@@ -16,7 +16,7 @@ const CreateManager = () => {
   const {
     register,
     handleSubmit,
-
+    reset,
     formState: { errors },
   } = useForm<TRegister>();
 
@@ -31,7 +31,8 @@ const CreateManager = () => {
       if ("error" in res) {
         toast.error(`${res.error.data.errorSources[0].message}`);
       } else if (res.data?.success) {
-        toast.success("User Registered Successfully");
+        toast.success("Manager Registered Successfully");
+        reset();
       }
     } catch (err) {
       console.log(err);

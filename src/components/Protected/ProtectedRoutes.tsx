@@ -3,14 +3,19 @@ import { useAppDispatch, useAppSelector } from "../../redux/hook";
 import { logOut, useCurrentToken } from "../../redux/features/auth/authSlice";
 import { Navigate } from "react-router-dom";
 import { verifyToken } from "../../utils/verifyToken";
-import { TJWTPayload } from "../../interface/global.interface";
+import { TJWTPayload, TUserRole } from "../../interface/global.interface";
 
 type TProtectedRoute = {
   children: ReactNode;
-  role: string | undefined;
+  roles: TUserRole[] | undefined;
 };
 
-const ProtectedRoutes = ({ children, role }: TProtectedRoute) => {
+type TRoles = {
+  roles: TUserRole[];
+};
+
+const ProtectedRoutes = ({ children, ...roles }: TProtectedRoute) => {
+  console.log(roles.roles);
   const token = useAppSelector(useCurrentToken);
   let user;
 
@@ -20,10 +25,15 @@ const ProtectedRoutes = ({ children, role }: TProtectedRoute) => {
 
   const dispatch = useAppDispatch();
 
-  if (role !== undefined && role !== user?.role) {
+  if (!roles && roles !== undefined) {
     dispatch(logOut());
     return <Navigate to="/login" replace={true} />;
   }
+  if (!roles && !(roles as TRoles)?.roles.includes(user?.role as TUserRole)) {
+    dispatch(logOut());
+    return <Navigate to="/login" replace={true} />;
+  }
+
   if (!token) {
     return <Navigate to="/login" replace={true} />;
   }
