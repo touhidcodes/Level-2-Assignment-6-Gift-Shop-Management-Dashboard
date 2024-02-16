@@ -8,6 +8,7 @@ import { userRoles } from "../interface/global.interface";
 import { adminRoutes } from "./admin.routes";
 import { routesGenerator } from "../utils/routesGenertor";
 import { managerRoutes } from "./manager.routes";
+import { sellerRoutes } from "./seller.routes";
 
 const router = createBrowserRouter([
   {
@@ -31,7 +32,7 @@ const router = createBrowserRouter([
   {
     path: "/admin",
     element: (
-      <ProtectedRoutes roles={[userRoles.superAdmin, userRoles.admin]}>
+      <ProtectedRoutes role={userRoles.superAdmin}>
         <DashboardLayout />
       </ProtectedRoutes>
     ),
@@ -40,11 +41,20 @@ const router = createBrowserRouter([
   {
     path: "/manager",
     element: (
-      <ProtectedRoutes roles={[userRoles.manager]}>
+      <ProtectedRoutes role={userRoles.manager}>
         <DashboardLayout />
       </ProtectedRoutes>
     ),
     children: routesGenerator(managerRoutes),
+  },
+  {
+    path: "/seller",
+    element: (
+      <ProtectedRoutes role={userRoles.seller}>
+        <DashboardLayout />
+      </ProtectedRoutes>
+    ),
+    children: routesGenerator(sellerRoutes),
   },
 ]);
 

@@ -1,4 +1,4 @@
-import { Link, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import Headers from "../../shared/Headers/Headers";
 import { useCurrentUser } from "../../../redux/features/auth/authSlice";
 import { useAppSelector } from "../../../redux/hook";
@@ -6,6 +6,7 @@ import { userRoles } from "../../../interface/global.interface";
 import { dashboardItemsGenerator } from "../../../utils/dashboardItemsGenerator";
 import { adminRoutes } from "../../../router/admin.routes";
 import { managerRoutes } from "../../../router/manager.routes";
+import { sellerRoutes } from "../../../router/seller.routes";
 
 const DashboardLayout = () => {
   const user = useAppSelector(useCurrentUser);
@@ -15,6 +16,7 @@ const DashboardLayout = () => {
     managerRoutes,
     userRoles.manager
   );
+  const sellerItems = dashboardItemsGenerator(sellerRoutes, userRoles.seller);
 
   const sidebarContent = (
     <ul className="menu d-block text-white text-xl rounded-box">
@@ -40,7 +42,6 @@ const DashboardLayout = () => {
           ))}
         </>
       )}
-
       {user?.role === userRoles.manager && (
         <>
           {managerItems.map((item) => (
@@ -65,23 +66,24 @@ const DashboardLayout = () => {
       )}
       {user?.role === userRoles.seller && (
         <>
-          <li>
-            <details>
-              <summary>Sales Management</summary>
-              <ul>
-                <li>
-                  <a>
-                    <Link to="/dashboard/sell-product">Sell Product</Link>
-                  </a>
-                </li>
-                <li>
-                  <a>
-                    <Link to="/dashboard/sales-history">Sales History</Link>
-                  </a>
-                </li>
-              </ul>
-            </details>
-          </li>
+          {sellerItems.map((item) => (
+            <li key={item?.key}>
+              {item?.children ? (
+                <details>
+                  <summary>{item?.label}</summary>
+                  <ul key={item?.key}>
+                    {item?.children?.map((child) => (
+                      <li key={child?.key} className="text-white">
+                        <a>{child?.label}</a>
+                      </li>
+                    ))}
+                  </ul>
+                </details>
+              ) : (
+                <summary>{item?.label}</summary>
+              )}
+            </li>
+          ))}
         </>
       )}
     </ul>

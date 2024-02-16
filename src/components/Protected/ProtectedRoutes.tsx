@@ -7,15 +7,10 @@ import { TJWTPayload, TUserRole } from "../../interface/global.interface";
 
 type TProtectedRoute = {
   children: ReactNode;
-  roles: TUserRole[] | undefined;
+  role: TUserRole | undefined;
 };
 
-type TRoles = {
-  roles: TUserRole[];
-};
-
-const ProtectedRoutes = ({ children, ...roles }: TProtectedRoute) => {
-  console.log(roles.roles);
+const ProtectedRoutes = ({ children, role }: TProtectedRoute) => {
   const token = useAppSelector(useCurrentToken);
   let user;
 
@@ -25,11 +20,7 @@ const ProtectedRoutes = ({ children, ...roles }: TProtectedRoute) => {
 
   const dispatch = useAppDispatch();
 
-  if (!roles && roles !== undefined) {
-    dispatch(logOut());
-    return <Navigate to="/login" replace={true} />;
-  }
-  if (!roles && !(roles as TRoles)?.roles.includes(user?.role as TUserRole)) {
+  if (role !== undefined && role !== user?.role) {
     dispatch(logOut());
     return <Navigate to="/login" replace={true} />;
   }

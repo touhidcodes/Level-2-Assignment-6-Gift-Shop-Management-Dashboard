@@ -52,12 +52,14 @@ export const managerRoutes = [
     name: "Sales Management",
     children: [
       {
-        path: "sales-history",
-        element: <SalesHistory />,
-      },
-      {
+        name: "Sell Product",
         path: "sell-product",
         element: <SellProduct />,
+      },
+      {
+        name: "Sales History",
+        path: "sales-history",
+        element: <SalesHistory />,
       },
     ],
   },
