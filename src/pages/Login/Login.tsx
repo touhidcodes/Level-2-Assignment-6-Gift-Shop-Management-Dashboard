@@ -23,7 +23,6 @@ const Login = () => {
   const {
     register,
     handleSubmit,
-
     formState: { errors },
   } = useForm<TLogin>();
 
@@ -36,7 +35,7 @@ const Login = () => {
       const res = await login(credentials).unwrap();
 
       if (!res.isError) {
-        toast.success("Product created successfully");
+        toast.success("User logged in successfully");
       } else {
         toast.error("Something went wrong.");
       }

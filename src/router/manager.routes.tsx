@@ -1,3 +1,4 @@
+import CreateCoupon from "../pages/Coupon/CreateCoupon/CreateCoupon";
 import AllProduct from "../pages/Product/AllProduct/AllProduct";
 import CreateProduct from "../pages/Product/CreateProduct/CreateProduct";
 import DuplicateProduct from "../pages/Product/DuplicateProduct/DuplicateProduct";
@@ -12,6 +13,16 @@ export const managerRoutes = [
     name: "Welcome",
     path: "welcome",
     element: <Welcome />,
+  },
+  {
+    name: "User Management",
+    children: [
+      {
+        name: "Create User",
+        path: "create-user",
+        element: <CreateUser />,
+      },
+    ],
   },
   {
     name: "Product Management",
@@ -39,16 +50,6 @@ export const managerRoutes = [
     ],
   },
   {
-    name: "User Management",
-    children: [
-      {
-        name: "Create User",
-        path: "create-user",
-        element: <CreateUser />,
-      },
-    ],
-  },
-  {
     name: "Sales Management",
     children: [
       {
@@ -60,6 +61,21 @@ export const managerRoutes = [
         name: "Sales History",
         path: "sales-history",
         element: <SalesHistory />,
+      },
+    ],
+  },
+  {
+    name: "Coupon Management",
+    children: [
+      {
+        name: "Create Coupon",
+        path: "create-coupon",
+        element: <CreateCoupon />,
+      },
+      {
+        name: "All Coupons",
+        path: "coupons",
+        element: <CreateCoupon />,
       },
     ],
   },

@@ -1,9 +1,8 @@
+import CreateCoupon from "../pages/Coupon/CreateCoupon/CreateCoupon";
 import AllProduct from "../pages/Product/AllProduct/AllProduct";
 import CreateProduct from "../pages/Product/CreateProduct/CreateProduct";
 import DuplicateProduct from "../pages/Product/DuplicateProduct/DuplicateProduct";
 import UpdateProduct from "../pages/Product/UpdateProduct/UpdateProduct";
-import SalesHistory from "../pages/Sales/SalesHistory/SalesHistory";
-import SellProduct from "../pages/Sales/SellProduct/SellProduct";
 import CreateUser from "../pages/User/CreateUser/CreateUser";
 import Welcome from "../pages/Welcome/Welcome";
 
@@ -49,17 +48,17 @@ export const adminRoutes = [
     ],
   },
   {
-    name: "Sales Management",
+    name: "Coupon Management",
     children: [
       {
-        name: "Sell Product",
-        path: "sell-product",
-        element: <SellProduct />,
+        name: "Create Coupon",
+        path: "create-coupon",
+        element: <CreateCoupon />,
       },
       {
-        name: "Sales History",
-        path: "sales-history",
-        element: <SalesHistory />,
+        name: "All Coupons",
+        path: "coupons",
+        element: <CreateCoupon />,
       },
     ],
   },

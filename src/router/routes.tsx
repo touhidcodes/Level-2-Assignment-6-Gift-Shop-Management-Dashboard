@@ -30,7 +30,7 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "/admin",
+    path: "/superAdmin",
     element: (
       <ProtectedRoutes role={userRoles.superAdmin}>
         <DashboardLayout />

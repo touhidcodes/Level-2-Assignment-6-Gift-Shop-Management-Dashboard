@@ -2,16 +2,14 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { TProduct } from "../../../interface/Product.interface";
 import { useCreateProductMutation } from "../../../redux/features/product/productApi";
 import { toast } from "sonner";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 const CreateProduct = () => {
-  const [isFormDisabled, setIsFormDisabled] = useState(false);
   const [createProduct] = useCreateProductMutation();
-  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<TProduct>();
 
@@ -21,8 +19,8 @@ const CreateProduct = () => {
       toast.error("Something Went Wrong");
     } else if (res.data?.success) {
       toast.success("Product Created Successfully");
-      setIsFormDisabled(true);
-      navigate("/dashboard/product");
+
+      reset();
     }
   };
 
@@ -39,7 +37,6 @@ const CreateProduct = () => {
               <input
                 {...register("name", { required: true })}
                 className="input input-bordered input-sm w-full"
-                disabled={isFormDisabled}
               />
               <div>
                 {errors.name && (
@@ -54,7 +51,6 @@ const CreateProduct = () => {
                   required: true,
                 })}
                 className="input input-bordered input-sm w-full"
-                disabled={isFormDisabled}
               />
               <div>
                 {errors.quantity && (
@@ -67,7 +63,6 @@ const CreateProduct = () => {
               <input
                 {...register("recipient", { required: true })}
                 className="input input-bordered input-sm w-full"
-                disabled={isFormDisabled}
               />
             </div>
             <div className="mt-5 space-y-3">
@@ -75,7 +70,6 @@ const CreateProduct = () => {
               <input
                 {...register("theme", { required: true })}
                 className="input input-bordered input-sm w-full"
-                disabled={isFormDisabled}
               />
               <div>
                 {errors.theme && (
@@ -88,7 +82,6 @@ const CreateProduct = () => {
               <input
                 {...register("material", { required: true })}
                 className="input input-bordered input-sm w-full"
-                disabled={isFormDisabled}
               />
               <div>
                 {errors.material && (
@@ -104,7 +97,6 @@ const CreateProduct = () => {
               <input
                 {...register("price", { required: true })}
                 className="input input-bordered input-sm w-full"
-                disabled={isFormDisabled}
               />
               <div>
                 {errors.price && (
@@ -117,7 +109,6 @@ const CreateProduct = () => {
               <input
                 {...register("occasion", { required: true })}
                 className="input input-bordered input-sm w-full"
-                disabled={isFormDisabled}
               />
               <div>
                 {errors.occasion && (
@@ -130,7 +121,6 @@ const CreateProduct = () => {
               <input
                 {...register("category", { required: true })}
                 className="input input-bordered input-sm w-full"
-                disabled={isFormDisabled}
               />
               <div>
                 {errors.category && (
@@ -143,7 +133,6 @@ const CreateProduct = () => {
               <input
                 {...register("brand", { required: true })}
                 className="input input-bordered input-sm w-full"
-                disabled={isFormDisabled}
               />
               <div>
                 {errors.brand && (
@@ -156,7 +145,6 @@ const CreateProduct = () => {
               <input
                 {...register("color", { required: true })}
                 className="input input-bordered input-sm w-full"
-                disabled={isFormDisabled}
               />
               <div>
                 {errors.color && (
