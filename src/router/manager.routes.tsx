@@ -1,3 +1,4 @@
+import AllCoupons from "../pages/Coupon/AllCoupons/AllCoupons";
 import CreateCoupon from "../pages/Coupon/CreateCoupon/CreateCoupon";
 import AllProduct from "../pages/Product/AllProduct/AllProduct";
 import CreateProduct from "../pages/Product/CreateProduct/CreateProduct";
@@ -75,7 +76,7 @@ export const managerRoutes = [
       {
         name: "All Coupons",
         path: "coupons",
-        element: <CreateCoupon />,
+        element: <AllCoupons />,
       },
     ],
   },

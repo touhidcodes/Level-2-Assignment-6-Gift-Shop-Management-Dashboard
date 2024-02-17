@@ -22,3 +22,7 @@ export type TApiResponse = {
   data?: any;
   // other properties...
 };
+
+export type TError = {
+  error: any;
+};

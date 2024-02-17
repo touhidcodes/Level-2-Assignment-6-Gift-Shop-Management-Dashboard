@@ -5,6 +5,7 @@ import { verifyToken } from "../../utils/verifyToken";
 import { setUser } from "../../redux/features/auth/authSlice";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
+import { TJWTPayload } from "../../interface/global.interface";
 
 const Login = () => {
   const dispatch = useAppDispatch();
@@ -40,9 +41,10 @@ const Login = () => {
         toast.error("Something went wrong.");
       }
 
-      const user = verifyToken(res.data.accessToken);
+      const user = verifyToken(res.data.accessToken) as TJWTPayload;
+
       dispatch(setUser({ user, token: res.data.accessToken }));
-      navigate("/admin/welcome");
+      navigate(`/${user?.role}/welcome`);
     } catch (error: any) {
       toast.error(`${error?.data?.message}`);
     }

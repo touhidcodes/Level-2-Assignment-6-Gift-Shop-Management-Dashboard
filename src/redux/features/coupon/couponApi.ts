@@ -18,7 +18,18 @@ const salesApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: ["coupon"],
     }),
+    deleteCoupon: builder.mutation({
+      query: (couponId) => ({
+        url: `/coupon/${couponId}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["coupon"],
+    }),
   }),
 });
 
-export const { useGetAllCouponQuery, useCreateCouponMutation } = salesApi;
+export const {
+  useGetAllCouponQuery,
+  useCreateCouponMutation,
+  useDeleteCouponMutation,
+} = salesApi;
