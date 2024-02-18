@@ -3,7 +3,6 @@ import MainLayout from "../components/layouts/MainLayout/MainLayout";
 import DashboardLayout from "../components/layouts/DashboardLayout/DashboardLayout";
 import ProtectedRoutes from "../components/Protected/ProtectedRoutes";
 import Login from "../pages/Login/Login";
-import Register from "../pages/Register/Register";
 import { userRoles } from "../interface/global.interface";
 import { adminRoutes } from "./admin.routes";
 import { routesGenerator } from "../utils/routesGenertor";
@@ -23,10 +22,10 @@ const router = createBrowserRouter([
         path: "/login",
         element: <Login />,
       },
-      {
-        path: "register",
-        element: <Register />,
-      },
+      // {
+      //   path: "register",
+      //   element: <Register />,
+      // },
     ],
   },
   {

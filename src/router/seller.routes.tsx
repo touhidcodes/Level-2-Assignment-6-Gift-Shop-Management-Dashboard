@@ -1,4 +1,4 @@
-import SalesHistory from "../pages/Sales/SalesHistory/SalesHistory";
+import MySales from "../pages/Sales/MySales/MySales";
 import SellProduct from "../pages/Sales/SellProduct/SellProduct";
 import Welcome from "../pages/Welcome/Welcome";
 
@@ -17,9 +17,9 @@ export const sellerRoutes = [
         element: <SellProduct />,
       },
       {
-        name: "My Sales History",
-        path: "sales-history",
-        element: <SalesHistory />,
+        name: "My Sales",
+        path: "my-sales",
+        element: <MySales />,
       },
     ],
   },
