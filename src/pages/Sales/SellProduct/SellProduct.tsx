@@ -27,6 +27,7 @@ const SellProduct = () => {
   const { register, handleSubmit, reset, watch } = useForm<TSales>();
   const [createSales, result] = useCreateSalesMutation();
   const [productId, setProductId] = useState<string | undefined>(undefined);
+  const [productName, setProductName] = useState("");
   const [productPrice, setProductPrice] = useState(0);
   const [verifyCouponData, setVerifyCouponData] = useState("");
   const { data: couponData } = useGetAllCouponQuery(undefined);
@@ -76,6 +77,8 @@ const SellProduct = () => {
       grandTotal,
       seller: user.username,
       role: user.role,
+      productName,
+      productPrice,
     };
     createSales(salesData);
 
@@ -118,6 +121,7 @@ const SellProduct = () => {
                       showModal();
                       setProductId(product._id as string);
                       setProductPrice(product?.price);
+                      setProductName(product?.name);
                     }}
                   >
                     Sell

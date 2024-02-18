@@ -1,5 +1,6 @@
 import AllCoupons from "../pages/Coupon/AllCoupons/AllCoupons";
 import CreateCoupon from "../pages/Coupon/CreateCoupon/CreateCoupon";
+import Invoice from "../pages/Invoice/Invoice";
 import AllProduct from "../pages/Product/AllProduct/AllProduct";
 import CreateProduct from "../pages/Product/CreateProduct/CreateProduct";
 import DuplicateProduct from "../pages/Product/DuplicateProduct/DuplicateProduct";
@@ -29,22 +30,20 @@ export const managerRoutes = [
     name: "Product Management",
     children: [
       {
-        name: "Create Product",
-        path: "create-product",
-        element: <CreateProduct />,
-      },
-      {
         name: "All Products",
         path: "product",
         element: <AllProduct />,
       },
       {
-        name: "Duplicate Product",
+        name: "Create Product",
+        path: "create-product",
+        element: <CreateProduct />,
+      },
+      {
         path: "product/duplicate",
         element: <DuplicateProduct />,
       },
       {
-        name: "Update Product",
         path: "product/:productId",
         element: <UpdateProduct />,
       },
@@ -69,15 +68,19 @@ export const managerRoutes = [
     name: "Coupon Management",
     children: [
       {
-        name: "Create Coupon",
-        path: "create-coupon",
-        element: <CreateCoupon />,
-      },
-      {
         name: "All Coupons",
         path: "coupons",
         element: <AllCoupons />,
       },
+      {
+        name: "Create Coupon",
+        path: "create-coupon",
+        element: <CreateCoupon />,
+      },
     ],
+  },
+  {
+    path: "invoice",
+    element: <Invoice />,
   },
 ];

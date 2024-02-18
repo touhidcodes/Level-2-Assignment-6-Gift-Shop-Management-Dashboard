@@ -2,11 +2,17 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { SalesFilterForm, TSales } from "../../../interface/sales.interface";
 import { useGetSalesQuery } from "../../../redux/features/sales/salesApi";
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../../../redux/hook";
+import { useCurrentUser } from "../../../redux/features/auth/authSlice";
+import { addSalesId } from "../../../redux/features/sales/salesSlice";
 
 const SalesHistory = () => {
   const [queryData, setQueryData] = useState<string | undefined>(undefined);
   const { register, handleSubmit } = useForm<SalesFilterForm>();
   const { data, isLoading } = useGetSalesQuery(queryData);
+  const user = useAppSelector(useCurrentUser);
+  const dispatch = useAppDispatch();
 
   const onSubmit: SubmitHandler<SalesFilterForm> = (data) => {
     const queryString = `query=${data.selectedParam}`;
@@ -14,7 +20,7 @@ const SalesHistory = () => {
   };
 
   return (
-    <div className="overflow-x-auto bg-base-100 mt-10 px-20 w-full">
+    <div className="overflow-x-auto bg-base-100 mt-10 px-10 w-full">
       <form onSubmit={handleSubmit(onSubmit)}>
         <label className="mr-5">
           Filter Parameter:
@@ -43,8 +49,10 @@ const SalesHistory = () => {
             <th>Product Name </th>
             <th>Buyer Name</th>
             <th>Quantity</th>
-            <th>Brand</th>
             <th> Date</th>
+            <th>Grand Total</th>
+            <th>Role</th>
+            <th>Invoice</th>
           </tr>
         </thead>
         <tbody>
@@ -60,12 +68,24 @@ const SalesHistory = () => {
               </td>
               <td>{product.buyer}</td>
               <td>{product.quantity} pcs</td>
+              <td>{product.date} </td>
+              <td> {product?.grandTotal} $</td>
               <td>
-                <span className="badge badge-ghost badge-sm">
-                  {product?.populatedProduct?.brand}
+                <span className="badge badge-ghost badge-md">
+                  {product?.role}
                 </span>
               </td>
-              <td>{product.date} </td>
+              <td>
+                <button
+                  className="btn btn-xs btn-accent text-blue-950"
+                  onClick={() => {
+                    dispatch(addSalesId(product?._id as string));
+                    console.log(product._id);
+                  }}
+                >
+                  <Link to={`/${user.role}/invoice`}>Download</Link>
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>

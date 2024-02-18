@@ -10,6 +10,22 @@ const salesApi = baseApi.injectEndpoints({
       providesTags: ["sales"],
     }),
 
+    getSingleSales: builder.query({
+      query: (id) => ({
+        url: `/sales/${id}`,
+        method: "GET",
+      }),
+      providesTags: ["sales"],
+    }),
+
+    getUserSales: builder.query({
+      query: (username) => ({
+        url: `/sales/user/${username}`,
+        method: "GET",
+      }),
+      providesTags: ["sales"],
+    }),
+
     createSales: builder.mutation({
       query: (sales) => ({
         url: "/sales",
@@ -21,4 +37,9 @@ const salesApi = baseApi.injectEndpoints({
   }),
 });
 
-export const { useGetSalesQuery, useCreateSalesMutation } = salesApi;
+export const {
+  useGetSalesQuery,
+  useGetSingleSalesQuery,
+  useGetUserSalesQuery,
+  useCreateSalesMutation,
+} = salesApi;

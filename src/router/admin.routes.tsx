@@ -18,22 +18,20 @@ export const adminRoutes = [
     name: "Product Management",
     children: [
       {
-        name: "Create Product",
-        path: "create-product",
-        element: <CreateProduct />,
-      },
-      {
         name: "All Products",
         path: "product",
         element: <AllProduct />,
       },
       {
-        name: "Duplicate Product",
+        name: "Create Product",
+        path: "create-product",
+        element: <CreateProduct />,
+      },
+      {
         path: "product/duplicate",
         element: <DuplicateProduct />,
       },
       {
-        name: "Update Product",
         path: "product/:productId",
         element: <UpdateProduct />,
       },
@@ -53,14 +51,14 @@ export const adminRoutes = [
     name: "Coupon Management",
     children: [
       {
-        name: "Create Coupon",
-        path: "create-coupon",
-        element: <CreateCoupon />,
-      },
-      {
         name: "All Coupons",
         path: "coupons",
         element: <AllCoupons />,
+      },
+      {
+        name: "Create Coupon",
+        path: "create-coupon",
+        element: <CreateCoupon />,
       },
     ],
   },

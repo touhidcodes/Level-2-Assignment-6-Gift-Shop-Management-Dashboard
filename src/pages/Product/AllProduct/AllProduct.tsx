@@ -14,6 +14,7 @@ import {
 } from "../../../redux/features/product/productSlice";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useState } from "react";
+import { useCurrentUser } from "../../../redux/features/auth/authSlice";
 
 const AllProduct = () => {
   const [queryData, setQueryData] = useState<string | undefined>(undefined);
@@ -23,6 +24,7 @@ const AllProduct = () => {
   const { data, refetch } = useGetProductQuery(queryData);
   const productIds = useAppSelector((state) => state.product.productIds);
   const { register, handleSubmit, watch } = useForm<GiftFilterForm>();
+  const user = useAppSelector(useCurrentUser);
 
   const selectedParam = watch("selectedParam");
 
@@ -158,7 +160,7 @@ const AllProduct = () => {
                 <td>{product.color}</td>
                 <td>
                   <button className="btn btn-xs">
-                    <Link to={`/dashboard/product/${product._id!}`}>
+                    <Link to={`/${user.role}/product/${product._id!}`}>
                       Update
                     </Link>
                   </button>
@@ -170,7 +172,9 @@ const AllProduct = () => {
                       dispatch(addDuplicateProductId(product._id as string));
                     }}
                   >
-                    <Link to={`/dashboard/product/duplicate`}>Duplicate</Link>
+                    <Link to={`/${user.role}/product/duplicate`}>
+                      Duplicate
+                    </Link>
                   </button>
                 </td>
                 <td>
