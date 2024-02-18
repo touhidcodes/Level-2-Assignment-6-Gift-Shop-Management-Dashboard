@@ -10,6 +10,13 @@ const salesApi = baseApi.injectEndpoints({
       providesTags: ["coupon"],
     }),
 
+    verifyCoupon: builder.query({
+      query: (coupon) => ({
+        url: `/coupon/verify-coupon/${coupon}`,
+        method: "GET",
+      }),
+    }),
+
     createCoupon: builder.mutation({
       query: (coupon) => ({
         url: "/coupon",
@@ -18,6 +25,7 @@ const salesApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: ["coupon"],
     }),
+
     deleteCoupon: builder.mutation({
       query: (couponId) => ({
         url: `/coupon/${couponId}`,
@@ -30,6 +38,7 @@ const salesApi = baseApi.injectEndpoints({
 
 export const {
   useGetAllCouponQuery,
+  useVerifyCouponQuery,
   useCreateCouponMutation,
   useDeleteCouponMutation,
 } = salesApi;

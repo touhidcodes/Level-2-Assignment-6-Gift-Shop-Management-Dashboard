@@ -6,6 +6,7 @@ export type TSales = {
   buyer: string;
   date: string;
   sellDate: number;
+  coupon?: string;
   populatedProduct?: TProduct;
 };
 
