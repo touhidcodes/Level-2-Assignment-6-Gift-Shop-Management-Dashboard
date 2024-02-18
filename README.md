@@ -95,19 +95,37 @@ npm run dev
 
 Your application should now be running at http://localhost:5173.
 
-## User Credentials
+## User Login Credentials
 
 ```
-# User Login:
-· Username: user@assignment5
-· Password: 123456789
+# Super Admin Login:
+· Username: super@assignment6
+· Password: super@assignment6
+
+# Manager Login:
+· Username: manager@assignment6
+· Password: manager@assignment6
+
+# Seller Login:
+· Username: seller@assignment6
+· Password: seller@assignment6
+```
+
+```
+# Coupon Code 1:
+· Coupon: TOUHIDCODES
+· Discount: 12%
+
+# Coupon Code 2:
+· Coupon: 21Language
+· Discount: 10%
 ```
 
 ## Live URLs
 
-#### Live Project URL: https://l2a5-gift-shop-dashboard.web.app/
+#### Live Project URL: https://gift-shop-management-client.web.app/
 
-#### Live API URL: https://level2assignment5.vercel.app/
+#### Live API URL: https://gift-shop-management-server-omega.vercel.app/api
 
 ## Project Dependencies
 
@@ -115,6 +133,7 @@ Your application should now be running at http://localhost:5173.
 
 ```
  "dependencies": {
+    "@react-pdf/renderer": "^3.3.8",
     "@reduxjs/toolkit": "^2.1.0",
     "@types/react-datepicker": "^4.19.5",
     "firebase": "^10.8.0",
@@ -138,7 +157,7 @@ Your application should now be running at http://localhost:5173.
 
 ```
  "devDependencies": {
-    "@types/react": "^18.2.48",
+ "@types/react": "^18.2.48",
     "@types/react-dom": "^18.2.17",
     "@typescript-eslint/eslint-plugin": "^6.14.0",
     "@typescript-eslint/parser": "^6.14.0",

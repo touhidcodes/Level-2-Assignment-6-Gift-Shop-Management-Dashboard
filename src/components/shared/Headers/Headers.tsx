@@ -11,19 +11,9 @@ const Headers = () => {
 
   const navItems = (
     <>
+      <li>{!user ? <a>Register</a> : ""}</li>
       <li>
-        {!user ? (
-          <Link to="/register">
-            <a>Register</a>
-          </Link>
-        ) : (
-          ""
-        )}
-      </li>
-      <li>
-        <Link to="/dashboard/welcome">
-          <a>Dashboard</a>
-        </Link>
+        <a>Dashboard</a>
       </li>
       <li>
         <a>About Us</a>

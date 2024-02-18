@@ -48,7 +48,10 @@ const Invoice = () => {
     },
   });
   return (
-    <div className="py-10">
+    <div className="py-10 mx-auto">
+      <h4 className="py-10 text-xl font-semibold text-center">
+        You Can Download Invoice from the Ribbon of React-PDF Viewer
+      </h4>
       <PDFViewer width={550} height={700}>
         <Document>
           <Page size="A4" style={styles.body}>

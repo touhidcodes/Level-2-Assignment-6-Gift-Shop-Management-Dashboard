@@ -32,9 +32,7 @@ const MySales = () => {
             <tr key={index}>
               <td>
                 <div className="flex items-center gap-3">
-                  <div className="font-bold">
-                    {product?.populatedProduct?.name}
-                  </div>
+                  <div className="font-bold">{product?.productName}</div>
                 </div>
               </td>
               <td>{product.buyer}</td>

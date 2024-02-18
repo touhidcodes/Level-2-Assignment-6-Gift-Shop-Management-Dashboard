@@ -1,0 +1,32 @@
+GitHub Repository Links:
+Client Side: https://github.com/Porgramming-Hero-web-course/l2-b2-assignment-6-fronten-touhidcodes
+Server Side: https://github.com/Porgramming-Hero-web-course/l2-b2-assignment-6-backend-touhidcodes
+
+Live Deployment Link:
+Client Side: https://gift-shop-management-client.web.app/
+Server Side: https://gift-shop-management-server-omega.vercel.app/api
+
+Project Showcase:
+Video Link: 
+
+Login Information:
+# Super Admin Login:
+· Username: super@assignment6
+· Password: super@assignment6
+
+# Manager Login:
+· Username: manager@assignment6
+· Password: manager@assignment6
+
+# Seller Login:
+· Username: seller@assignment6
+· Password: seller@assignment6
+
+Coupon Information
+# Coupon Code 1:
+· Coupon: TOUHIDCODES
+· Discount: 12%
+
+# Coupon Code 2:
+· Coupon: 21Language
+· Discount: 10%

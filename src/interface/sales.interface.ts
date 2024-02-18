@@ -15,6 +15,7 @@ export type TSales = {
   role: string;
   populatedProduct?: TProduct;
   productPrice: string;
+  productName: string;
 };
 
 export type SalesFilterForm = {

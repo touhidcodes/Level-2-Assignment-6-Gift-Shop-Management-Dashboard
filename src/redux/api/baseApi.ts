@@ -12,8 +12,7 @@ import { RootState } from "../store";
 import { setUser, logOut } from "../features/auth/authSlice";
 
 const baseQuery = fetchBaseQuery({
-  // baseUrl: `https://level2assignment5.vercel.app/api`,
-  baseUrl: `http://localhost:5000/api`,
+  baseUrl: `https://gift-shop-management-server-omega.vercel.app/api`,
   credentials: "include",
   prepareHeaders: (headers, { getState }) => {
     const token = (getState() as RootState).auth.token;
@@ -42,7 +41,7 @@ const baseQueryWithRefreshToken: BaseQueryFn<
     console.log("Sending refresh token");
 
     const res = await fetch(
-      `https://level2assignment5.vercel.app/api/auth/refresh-token`,
+      `https://gift-shop-management-server-omega.vercel.app/`,
       {
         method: "POST",
         credentials: "include",

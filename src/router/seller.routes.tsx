@@ -1,3 +1,4 @@
+import Invoice from "../pages/Invoice/Invoice";
 import MySales from "../pages/Sales/MySales/MySales";
 import SellProduct from "../pages/Sales/SellProduct/SellProduct";
 import Welcome from "../pages/Welcome/Welcome";
@@ -22,5 +23,9 @@ export const sellerRoutes = [
         element: <MySales />,
       },
     ],
+  },
+  {
+    path: "invoice",
+    element: <Invoice />,
   },
 ];
