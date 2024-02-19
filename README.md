@@ -1,4 +1,4 @@
-# Level-2 Assignment-5 Gift Shop Management Dashboard
+# Level-2 Assignment-6 Gift Shop Management Dashboard
 
 The Gift Shop Management Dashboard is a comprehensive system designed to efficiently manage a gift shop's inventory, track sales, and analyze sales history. The dashboard incorporates features such as authentication, CRUD operations, state management, real-time UI updates, and gift filtering.
 
