@@ -72,4 +72,8 @@ export const adminRoutes = [
       },
     ],
   },
+  {
+    path: "invoice",
+    element: <Invoice />,
+  },
 ];

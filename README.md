@@ -83,7 +83,7 @@ npm install
    Create a .env file in the project root and configure any necessary environment variables. For example:
 
 ```
-BASE_URL=https://level2assignment5.vercel.app/api/
+BASE_URL=https://gift-shop-management-server-omega.vercel.app/api
 BASE_LOCAL=http://localhost:5000/api
 ```
 
