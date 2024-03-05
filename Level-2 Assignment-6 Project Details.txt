@@ -4,10 +4,10 @@ Server Side: https://github.com/Porgramming-Hero-web-course/l2-b2-assignment-6-b
 
 Live Deployment Link:
 Client Side: https://gift-shop-management-client.web.app/
-Server Side: https://gift-shop-management-server-omega.vercel.app/api
+Server Side: https://gift-shop-management-server-omega.vercel.app/
 
 Project Showcase:
-Video Link: 
+Video Link: https://drive.google.com/file/d/1jb2eqkL4rnvagWFmfwbTQHTHZqrlsGtr/view?usp=sharing
 
 Login Information:
 # Super Admin Login:

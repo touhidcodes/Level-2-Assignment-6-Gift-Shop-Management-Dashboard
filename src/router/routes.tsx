@@ -8,6 +8,7 @@ import { adminRoutes } from "./admin.routes";
 import { routesGenerator } from "../utils/routesGenertor";
 import { managerRoutes } from "./manager.routes";
 import { sellerRoutes } from "./seller.routes";
+import Register from "../pages/Register/Register";
 
 const router = createBrowserRouter([
   {
@@ -22,10 +23,10 @@ const router = createBrowserRouter([
         path: "/login",
         element: <Login />,
       },
-      // {
-      //   path: "register",
-      //   element: <Register />,
-      // },
+      {
+        path: "register",
+        element: <Register />,
+      },
     ],
   },
   {

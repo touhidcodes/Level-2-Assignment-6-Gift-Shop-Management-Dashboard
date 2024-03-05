@@ -1,5 +1,6 @@
 import AllCoupons from "../pages/Coupon/AllCoupons/AllCoupons";
 import CreateCoupon from "../pages/Coupon/CreateCoupon/CreateCoupon";
+import Invoice from "../pages/Invoice/Invoice";
 import AllProduct from "../pages/Product/AllProduct/AllProduct";
 import CreateProduct from "../pages/Product/CreateProduct/CreateProduct";
 import DuplicateProduct from "../pages/Product/DuplicateProduct/DuplicateProduct";

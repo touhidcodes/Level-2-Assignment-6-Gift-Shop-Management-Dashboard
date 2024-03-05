@@ -29,7 +29,6 @@ const Register = () => {
     };
     try {
       const res: TApiResponse = await registerUser(sellerData);
-      console.log(res);
       if ("error" in res) {
         toast.error(`${res.error.data.errorSources[0].message}`);
       } else if (res.data?.success) {

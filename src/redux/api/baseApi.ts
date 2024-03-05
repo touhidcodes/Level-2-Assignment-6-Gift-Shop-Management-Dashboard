@@ -10,9 +10,16 @@ import {
 } from "@reduxjs/toolkit/query/react";
 import { RootState } from "../store";
 import { setUser, logOut } from "../features/auth/authSlice";
+// import { toast } from "sonner";
 
 const baseQuery = fetchBaseQuery({
   baseUrl: `https://gift-shop-management-server-omega.vercel.app/api`,
+  // baseUrl: `http://localhost:5000/api`,
+  // baseUrl: `${
+  //   import.meta.env.VITE_ENV === "production"
+  //     ? import.meta.env.BASE_URL
+  //     : import.meta.env.LOCAL_URL
+  // }`,
   credentials: "include",
   prepareHeaders: (headers, { getState }) => {
     const token = (getState() as RootState).auth.token;

@@ -1,5 +1,5 @@
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useRegisterMutation } from "../../../redux/features/auth/authApi";
+import { useAdminRegisterMutation } from "../../../redux/features/auth/authApi";
 import { toast } from "sonner";
 import { TApiResponse } from "../../../interface/response.interface";
 import { TUserRole, userRoles } from "../../../interface/global.interface";
@@ -8,9 +8,7 @@ import { useCurrentUser } from "../../../redux/features/auth/authSlice";
 
 const CreateUser = () => {
   const user = useAppSelector(useCurrentUser);
-  const [registerUser] = useRegisterMutation();
-
-  console.log(user);
+  const [registerUser] = useAdminRegisterMutation();
 
   type TRegister = {
     username: string;

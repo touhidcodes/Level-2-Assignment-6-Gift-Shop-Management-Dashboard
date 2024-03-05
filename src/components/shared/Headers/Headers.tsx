@@ -11,10 +11,24 @@ const Headers = () => {
 
   const navItems = (
     <>
-      <li>{!user ? <a>Register</a> : ""}</li>
       <li>
-        <a>Dashboard</a>
+        {!user ? (
+          <a>
+            <Link to="register">Register</Link>
+          </a>
+        ) : (
+          ""
+        )}
       </li>
+      {user ? (
+        <li>
+          <a>
+            <Link to={`welcome`}>Dashboard</Link>
+          </a>
+        </li>
+      ) : (
+        ""
+      )}
       <li>
         <a>About Us</a>
       </li>
